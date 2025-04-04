@@ -174,19 +174,6 @@ void AccountListPage::on_actionRemove_triggered()
         m_accounts->removeAccount(selected);
     }
 }
-
-void AccountListPage::on_actionRefresh_triggered()
-{
-    QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
-    if (selection.size() > 0) {
-        QModelIndex selected = selection.first();
-        MinecraftAccountPtr account = selected.data(AccountList::PointerRole).value<MinecraftAccountPtr>();
-        m_accounts->requestRefresh(account->internalId());
-    }
-}
-
-void AccountListPage::on_actionSetDefault_triggered()
-{
     QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
     if (selection.size() > 0) {
         QModelIndex selected = selection.first();
